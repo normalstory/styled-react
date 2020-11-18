@@ -22,6 +22,8 @@ You will also see any lint errors in the console.
 
 
 # 참고 
-## css관련 내용
+## css 이론? 관련
 아.. 너무 오랫만에 해서 그런가??? 새로운 내용이 너무 많다 ㅋㅋㅋ
 https://heropy.blog/2018/11/24/css-flexible-box/
+## vscode 관련
+https://marketplace.visualstudio.com/items?itemName=jpoissonnier.vscode-styled-components
