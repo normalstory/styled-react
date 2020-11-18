@@ -1,6 +1,31 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+/** */
+const sizes = {
+  giant: 1170,
+  desktop: 992,
+  tablet: 768,
+  phablet: 572,
+  phone: 376,
+};
+
+export const media = Object.keys(sizes).reduce((accumulator, label) => {
+  accumulator[label] = (...args) => css`
+    @media (max-width: ${sizes[label]}px) {
+      ${css(...args)}
+    }
+  `;
+  return accumulator;
+}, {});
+/** */
+const Wrap = styled.div`
+  ${media.desktop`padding: 0 100px;`}
+  ${media.tablet`padding: 0 50px;`}
+  ${media.phablet`padding: 0 10px;`}
+  ${media.phone`padding: 0 3px;`}
+`;
+
 const Box = styled.div`
   background: ${(props) => props.color || "blue"};
   padding: 1rem;
@@ -60,21 +85,23 @@ const Button2 = styled.button`
 const StyledComponent = () => {
   return (
     <div>
-      <Box color="green">
-        <Button>
+      <Wrap>
+        <Box color="green">
+          <Button>
+            <p>hello</p>
+            <p>world</p>
+          </Button>
+          <Button inverted={true}>안녕, 월드</Button>
+          <p>hi </p>
+          there
+        </Box>
+        <Box>
+          <p>hi</p>
           <p>hello</p>
-          <p>world</p>
-        </Button>
-        <Button inverted={true}>안녕, 월드</Button>
-        <p>hi </p>
-        there
-      </Box>
-      <Box>
-        <p>hi</p>
-        <p>hello</p>
-        <span>world</span>
-        <Button2 primary>Primary</Button2>
-      </Box>
+          <span>world</span>
+          <Button2 primary>Primary</Button2>
+        </Box>
+      </Wrap>
     </div>
   );
 };
